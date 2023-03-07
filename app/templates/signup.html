@@ -1,0 +1,17 @@
+{% extends 'base.html' %}    
+{% block content %}   
+   
+   <h1>SIGN UP PAGE</h1>
+
+    <form method="POST" class="container col-4">
+        {{ sign_up_form.hidden_tag() }}
+
+        {{ sign_up_form.username(class='form-control', placeholder='Username')  }}
+        {{ sign_up_form.email(class='form-control', placeholder='Email')  }}
+        {{ sign_up_form.password(class='form-control', placeholder='Password')  }}
+        {{ sign_up_form.confirm_password(class='form-control', placeholder='Confirm Password')  }}
+        {{ sign_up_form.submit(class='form-control btn btn-success')  }}
+    </form>
+
+{% endblock %}   
+   

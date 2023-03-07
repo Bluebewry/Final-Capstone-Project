@@ -1,0 +1,19 @@
+{% extends 'base.html' %}    
+{% block content %}   
+   
+   <h1>Create a Post</h1>
+
+   <form method="POST" enctype="multipart/form-data" class="container col-4">
+    {{ product_form.hidden_tag() }}
+
+    {{ product_form.product_name(class='form-control', placeholder='Product Name')  }}
+    {{ product_form.price(class='form-control', placeholder='Price')  }}
+    {{ product_form.img_file(class='form-control', placeholder='Image File')  }}
+    {{ product_form.description(class='form-control', placeholder='Description')  }}
+
+    {{ product_form.submit(class='form-control btn-success')  }}
+</form>
+
+
+
+{% endblock %}   

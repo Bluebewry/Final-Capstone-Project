@@ -1,0 +1,19 @@
+{% extends 'base.html' %}    
+{% block content %}   
+   
+   <h1>Update Post</h1>
+
+   <form method="POST" class="container col-4">
+    {{ product_update_form.hidden_tag() }}
+
+    {{ product_update_form.product_name(class='form-control', placeholder='Product Name', value= post.product_name )  }}
+    {{ product_update_form.price(class='form-control', placeholder='Price', value= post.price )  }}
+    {{ product_update_form.img_file(class='form-control', placeholder='Image File', value= post.img_file )  }}
+    {{ product_update_form.description(class='form-control', placeholder='Description', value= post.description )  }}
+    
+    {{ product_update_form.submit(class='form-control btn-success')  }}
+</form>
+
+
+
+{% endblock %}   
