@@ -124,7 +124,7 @@ def createProduct():
                 img_file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],img_file.filename))
                 flash("FILE HAS BEEN UPLOADED", category='success')
                 
-                product_post = Product(product_name, price, img_file.filename, description, current_user.id)
+                product_post = Product(product_name, price, img_file.filename, description)
                 product_post.saveToDB()
     else: 
         return redirect(url_for("homePage"))
@@ -177,17 +177,23 @@ def deleteProduct(post_id):
 
 @app.route("/cart", methods=["GET"])
 @login_required
-def cart(user_id):
-    product = Product.query.filter_by(user_id == current_user.id)
-    return render_template('cart.html', product = product)
+def cart():
+    
+    cart = current_user.cart
+    products = []
+    for item in cart:
+        product = Product.query.get(item.product_id)
+        products.append(product)
+
+    return render_template('cart.html', products = products, user_id = current_user)
 
 @app.route("/cart/<int:product_id>/add", methods=["GET","POST"])
 @login_required
 def addToCart(product_id):
     product = Product.query.get(product_id)
-    product = Product.query.filter_by(Product.id == product_id).first()
+    product = Product.query.filter_by( product_id == product.id).first()
     add_to_cart = Cart(current_user.id, product.id)
-    add_to_cart.saveToDB()
+    
     if request.method == 'POST':
         add_to_cart.saveToDB()
 

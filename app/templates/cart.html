@@ -4,11 +4,11 @@
    <h1>ABOUT PAGE</h1>
 
 
-   {% for p in product %}
+   {% for product in products %}
     
         <div class="card" style="width: 18rem;">
             
-                <img src="{{ product.img_file }}" class="card-img-top" alt="{{ product.title }}">
+                <img src="{{ url_for('static', filename= 'files/' + product.img_url ) }}" class="card-img-top" alt="{{ product.title }}">
                 <div class="card-body">
                 <h5 class="card-title">{{ product.product_name }}</h5>
                 <p class="card-text">{{ product.price }}</p>
@@ -17,6 +17,7 @@
                 </div>
             </a>
         </div>
+
   {% endfor %}
 
 {% endblock %} 

@@ -4,13 +4,13 @@
    <h1>Single Product</h1>
    
     <div class="card" style="width: 18rem;">
-        <a class="text-dark text-decoration-none" href="{{ url_for('getPost', product_id = post.id) }}">
-            <img src="{{ post.img_file }}" class="card-img-top" alt="{{ post.title }}">
+        <a class="text-dark text-decoration-none" href="{{ url_for('getPost', post_id = post.id) }}">
+            <img src="{{ url_for('static', filename= 'files/' + post.img_url ) }}" class="card-img-top" alt="{{ post.title }}">
             <div class="card-body">
             <h5 class="card-title">{{ post.product_name }}</h5>
             <p class="card-text">{{ post.price }}</p>
             <p class="card-text">{{ post.description }}</p>
-            <a href="{{ url_for('addToCart', product_id=product.id) }}" class="btn btn-primary">ADD TO CART</a>
+                <a href="{{ url_for('addToCart', product_id=post.id) }}" class="btn btn-primary">ADD TO CART</a>
             </div>
         </a>
     </div>
