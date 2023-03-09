@@ -1,3 +1,43 @@
+main {
+    background-color:#262626;
+}
+
 .homepage {
     background: lavender;
+}
+.mnavbar {
+    background-color: #1c1c1c;
+}
+.navbar {
+    color: pink;
+}
+.navbar-brand{
+    padding-left: 10px;
+    padding-right: 5px;
+    
+}
+a {
+    color: pink;
+}
+a:hover {
+    background-color: hotpink;
+  }
+.nav-link{
+    color: pink;
+    
+}
+.current_user {
+    padding: 50px;
+}
+h1 {
+    text-align: center;
+    background-color: #262626;
+    color: pink;
+    padding: 50px;
+}
+.headshot {
+    width: 150px;
+}
+.manager {
+    width: 150px;
 }

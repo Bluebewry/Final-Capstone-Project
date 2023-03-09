@@ -12,7 +12,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(45), nullable=False, unique=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
-    cart = db.relationship("Cart", backref='shopper', lazy=True)
+    cart = db.relationship("Cart", backref='shopper', lazy=True, cascade='all, delete')
+
 
     def __init__(self, username, email, password):
         self.username = username
@@ -38,7 +39,7 @@ class Product(db.Model):
     description = db.Column(db.String(1000))
     img_url = db.Column(db.String, nullable=False)
     
-    def __init__(self, product_name, price, img_url, description, user_id):
+    def __init__(self, product_name, price, img_url, description):
         self.product_name = product_name
         self.price = price
         self.img_url = img_url
@@ -58,7 +59,7 @@ class Product(db.Model):
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey("product.id"), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey("product.id", ondelete='CASCADE'), nullable=False)
     
     def __init__(self, user_id, product_id):
         self.user_id = user_id
@@ -66,6 +67,9 @@ class Cart(db.Model):
 
     def saveToDB(self):
         db.session.add(self)
+        db.session.commit()
+
+    def saveChanges(self):
         db.session.commit()
     
     def deleteFromDB(self):

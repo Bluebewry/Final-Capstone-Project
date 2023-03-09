@@ -172,8 +172,10 @@ def deleteProduct(post_id):
     post = Product.query.get(post_id)
     if current_user.username == 'admin':
         post.deleteFromDB()
+    else:
+        return redirect(url_for('homePage'))
     
-    return redirect(url_for('getPosts'))
+    return render_template('products.html')
 
 @app.route("/cart", methods=["GET"])
 @login_required
@@ -191,11 +193,20 @@ def cart():
 @login_required
 def addToCart(product_id):
     product = Product.query.get(product_id)
-    product = Product.query.filter_by( product_id == product.id).first()
+
     add_to_cart = Cart(current_user.id, product.id)
-    
-    if request.method == 'POST':
-        add_to_cart.saveToDB()
+    add_to_cart.saveToDB()
 
     return redirect(url_for('getPosts'))
+
+@app.route("/cart/<int:product_id>/remove", methods=["GET","POST"])
+@login_required
+def removeFromCart(product_id):
+    # product = Cart.query.get(product_id)
+    product = Cart.query.filter_by(product_id = product_id).first()
+    product.deleteFromDB()
+    flash("Item removed from cart", category='success')
+    
+
+    return redirect(url_for('cart'))
 
