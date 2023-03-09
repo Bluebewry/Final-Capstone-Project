@@ -3,21 +3,20 @@
    
    <h1>Products</h1>
    <div class="container ">
-       <div class="row ">
+       <div class="row justify-content-center">
             {% for post in posts %}
-          
-                    <div class="card " style="width: 18rem;">
-                        <a class="text-dark text-decoration-none" href="{{ url_for('getPost', post_id = post.id) }}">
-                            <img src="{{ url_for('static', filename= 'files/' + post.img_url ) }}" class="card-img-top" alt="{{ post.title }}">
-                            <div class="card-body">
-                            <h5 class="card-title d-flex justify-content-center">{{ post.product_name }}</h5>
-                            <p class="card-text d-flex justify-content-center">${{ post.price }}</p>
-                            <p class="card-text d-flex justify-content-center">{{ post.description }}</p>
+                <div class="card " style="width: 18rem;">
+                    <a class="text-dark text-decoration-none" href="{{ url_for('getPost', post_id = post.id) }}">
+                        <img src="{{ url_for('static', filename= 'files/' + post.img_url ) }}" class="card-img-top" alt="{{ post.title }}" style="width:262px;height:295px;">
+                        <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">{{ post.product_name }}</h5>
+                        <p class="card-text d-flex justify-content-center">${{ post.price }}</p>
+                        <p class="card-text d-flex justify-content-center">{{ post.description }}</p>
 
-                            <a href="{{ url_for('addToCart', product_id=post.id) }}" class="btn btn-secondary d-flex justify-content-center">ADD TO CART</a>
-                            </div>
-                        </a>
-                    </div>
+                        <a href="{{ url_for('addToCart', product_id=post.id) }}" class="btn btn-secondary d-flex justify-content-center">ADD TO CART</a>
+                        </div>
+                    </a>
+                </div>
              {% endfor %}
                 </div>
         </div>   

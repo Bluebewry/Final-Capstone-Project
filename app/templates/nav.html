@@ -2,31 +2,31 @@
 
 <nav class="navbar navbar-expand-lg  mnavbar m-0 p-0" >
     <div class="container-fluid ">
-      <a class="navbar-brand me-0 " href="#" style="color:pink;pointer-events:none">Beaded Jewelry by Jackie</a>
+      <a class="navbar-brand me-0 " href="#" style="color:pink;pointer-events:none;font-size:28px;">Beaded Jewelry by Jackie</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav" >
-          <a class="nav-link active pe-5 " aria-current="page" href="/" style="color:pink;"><i class="bi bi-house-heart"></i></a>
-          <a class="nav-link pe-5 " href="/about" style="color:pink;">About</a>
-          <a class="nav-link pe-5 " href="/posts" style="color:pink;">Products</a>
+          <a class="nav-link active pe-5 " aria-current="page" href="/" style="color:pink;font-size:18px;"><i class="bi bi-house-heart"></i></a>
+          <a class="nav-link pe-5 " href="/about" style="color:pink;font-size:18px;">About</a>
+          <a class="nav-link pe-5 " href="/posts" style="color:pink;font-size:18px;">Products</a>
 
           
           {% if current_user.is_authenticated %}
-          <a class="nav-link pe-5 " href="/logout" style="color:pink;">Log Out</a>
-          <a class="nav-link pe-5 " href="/cart" style="color:pink;"><i class="bi bi-cart4"></i></a>
+          <a class="nav-link pe-5 " href="/logout" style="color:pink;font-size:18px;">Log Out</a>
+          <a class="nav-link pe-5 " href="/cart" style="color:pink;font-size:18px;"><i class="bi bi-cart4"></i></a>
 
           {% if current_user.username == "admin" %}
-           <a class="nav-link pe-5 " href="/products/create" style="color:pink;">Create Post</a>
+           <a class="nav-link pe-5 " href="/products/create" style="color:pink;font-size:18px;">Create Post</a>
           {% endif %}
 
-          <a class="nav-link current_user me-0"  href="/profile" style="color:pink;">{{ current_user.username }}</a>
+          <a class="nav-link current_user me-0"  href="/profile" style="color:pink;font-size:18px;">{{ current_user.username }}</a>
 
 
           {% else %}
-          <a class="nav-link pe-5 " href="/signup" style="color:pink;">Sign Up</a>
-          <a class="nav-link pe-5" href="/login" style="color:pink;">Login</a>
+          <a class="nav-link pe-5 " href="/signup" style="color:pink;font-size:18px;">Sign Up</a>
+          <a class="nav-link pe-5" href="/login" style="color:pink;font-size:18px;">Login</a>
           {% endif %}
 
           

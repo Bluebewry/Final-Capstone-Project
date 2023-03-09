@@ -20,7 +20,7 @@ a {
     color: pink;
 }
 a:hover {
-    background-color: hotpink;
+    color: hotpink;
   }
 .nav-link{
     color: pink;
@@ -35,9 +35,11 @@ h1 {
     color: pink;
     padding: 50px;
 }
+
 .headshot {
-    width: 150px;
+    width: 180px;
+    
 }
 .manager {
-    width: 150px;
+    width: 250px;
 }
